@@ -1,5 +1,8 @@
-import { defineConfig, defineSchema, RouteMappingPlugin } from "tinacms";
-import { client } from "./__generated__/client";
+import { defineConfig, defineSchema, RouteMappingPlugin } from 'tinacms'
+import { client } from './__generated__/client'
+
+import collectionPage from './collections/page.js'
+import collectionBlog from './collections/blog.js'
 
 const schema = defineSchema({
   config: {
@@ -11,72 +14,39 @@ const schema = defineSchema({
     token: process.env.TINA_TOKEN,
     media: {
       tina: {
-        mediaRoot: "uploads",
-        publicFolder: "public",
-      },
-    },
+        mediaRoot: 'uploads',
+        publicFolder: 'public'
+      }
+    }
   },
   collections: [
-    {
-      label: "Page Content",
-      name: "page",
-      path: "content/page",
-      format: "mdx",
-      fields: [
-        {
-          name: "body",
-          label: "Main Content",
-          type: "rich-text",
-          isBody: true,
-        },
-      ],
-    },
-    {
-      label: "Blog Posts",
-      name: "post",
-      path: "content/post",
-      fields: [
-        {
-          type: "string",
-          label: "Title",
-          name: "title",
-        },
-        {
-          type: "string",
-          label: "Blog Post Body",
-          name: "body",
-          isBody: true,
-          ui: {
-            component: "textarea",
-          },
-        },
-      ],
-    },
-  ],
-});
+    collectionPage,
+    collectionBlog
+  ]
+})
 
-export default schema;
+export default schema
 
 export const tinaConfig = defineConfig({
   client,
   schema,
   cmsCallback: (cms) => {
     const RouteMapping = new RouteMappingPlugin((collection, document) => {
-      if (["page"].includes(collection.name)) {
-        if (document._sys.filename === "home") {
-          return "/";
+      if (['page'].includes(collection.name)) {
+        if (document._sys.filename === 'home') {
+          return '/'
         }
       }
 
-      if (["post"].includes(collection.name)) {
-        return `/posts/${document._sys.filename}`;
+      if (['blog'].includes(collection.name)) {
+        return `/blog/${document._sys.filename}`
       }
 
-      return undefined;
-    });
+      return undefined
+    })
 
-    cms.plugins.add(RouteMapping);
+    cms.plugins.add(RouteMapping)
 
-    return cms;
-  },
-});
+    return cms
+  }
+})
