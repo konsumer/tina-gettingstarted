@@ -16,7 +16,7 @@
     "tinacms": "^0.69.3"
   },
   "devDependencies": {
-    "@tinacms/cli": "^0.61.8"
+    "@tinacms/cli": "^0.61.13"
   },
   "resolutions": {
     "@headlessui/react": "1.4.1"
