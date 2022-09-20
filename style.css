@@ -1,0 +1,9 @@
+/* XXX:  hide the image button to force use of the embed menu */
+.with-toolbar > .sticky > .grid > .grid > span:nth-child(3) {
+  display: none !important;
+}
+
+img {
+  max-width:  100%;
+  height:  auto;
+}
