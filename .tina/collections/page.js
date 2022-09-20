@@ -1,14 +1,44 @@
+import { templateImage } from '../components/forms.jsx'
+
 export default {
   label: 'Page Content',
   name: 'page',
   path: 'content/page',
-  format: 'mdx',
+  format: 'json',
   fields: [
     {
-      name: 'body',
-      label: 'Main Content',
-      type: 'rich-text',
-      isBody: true
+      name: 'title',
+      label: 'Title',
+      type: 'string',
+      isTitle: true,
+      required: true
+    },
+    {
+      name: 'rows',
+      label: 'Content Rows',
+      type: 'object',
+      list: true,
+      ui: {
+        itemProps (item) {
+          return { label: item?.title || 'Row' }
+        }
+      },
+      fields: [
+        {
+          type: 'string',
+          label: 'Title',
+          name: 'title',
+          description: 'An optional title for this content-row, to make it easier to edit.'
+        },
+        {
+          type: 'rich-text',
+          label: 'Block',
+          name: 'block',
+          templates: [
+            templateImage
+          ]
+        }
+      ]
     }
   ]
 }
