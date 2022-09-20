@@ -1,11 +1,13 @@
 import { TinaMarkdown } from 'tinacms/dist/rich-text'
 import Head from 'next/head'
+import { TwitterTweetEmbed } from 'react-twitter-embed'
 import { Layout } from '../components/Layout'
 import { useTina } from 'tinacms/dist/edit-state'
 import { client } from '../.tina/__generated__/client'
 
 const pageComponents = {
-  Image: ({ type, ...props }) => <img {...props} />
+  Image: ({ type, ...props }) => <img {...props} />,
+  TwitterTweetEmbed
 }
 
 export default function Home (props) {
@@ -21,10 +23,14 @@ export default function Home (props) {
         <title>{data.page.title}</title>
       </Head>
       <main className='page-content'>
-        {(data?.page?.rows || []).map((row, i) => (
-          <article key={i}>
-            <TinaMarkdown components={pageComponents} content={row.block} />
-          </article>
+        {(data?.page?.rows || []).map((row, r) => (
+          <section key={r} style={{ display: 'flex' }}>
+            {(row?.blocks || []).map((block, b) => (
+              <article key={b} style={{ flex: 1 }}>
+                <TinaMarkdown components={pageComponents} content={block.block} />
+              </article>
+            ))}
+          </section>
         ))}
       </main>
     </Layout>

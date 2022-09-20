@@ -2,20 +2,41 @@
   "title": "Cool!",
   "rows": [
     {
+      "blocks": [
+        {
+          "block": "<Image src=\"https://res.cloudinary.com/dhvmsrdo7/image/upload/v1663703199/samples/animals/cat.jpg\" width={768} height={1024} alt=\"CAT!\" title=\"CAT!!!!!!!!!\" />\n\n"
+        }
+      ]
+    },
+    {
       "title": "Row 1",
-      "block": "Some random row\n\n<Image src=\"/uploads/tina.jpeg\" width={1120} height={800} alt=\"tina!\" title=\"tina is cool!\" />\n\n"
+      "blocks": [
+        {
+          "title": "Box A",
+          "block": "A\n"
+        },
+        {
+          "title": "Box B",
+          "block": "B\n"
+        },
+        {
+          "title": "Box C",
+          "block": "C\n"
+        }
+      ]
     },
     {
       "title": "Row 2",
-      "block": "#### Block 2\n"
-    },
-    {
-      "title": "Row 3",
-      "block": "## Block 3\n"
-    },
-    {
-      "title": "NEAT",
-      "block": "Hello!\n\n## Neat Text, bro!\n"
+      "blocks": [
+        {
+          "title": "Box 1",
+          "block": "## 1\n"
+        },
+        {
+          "title": "Box 2",
+          "block": "2\n"
+        }
+      ]
     }
   ]
 }

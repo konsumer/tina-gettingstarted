@@ -1,4 +1,4 @@
-import { templateImage } from '../components/forms.jsx'
+import { templateImage, templateTweet } from '../components/forms.jsx'
 
 export default {
   label: 'Page Content',
@@ -31,14 +31,43 @@ export default {
           description: 'An optional title for this content-row, to make it easier to edit.'
         },
         {
-          type: 'rich-text',
-          label: 'Block',
-          name: 'block',
-          templates: [
-            templateImage
+          type: 'object',
+          name: 'blocks',
+          label: 'Blocks',
+          list: true,
+          ui: {
+            itemProps (item) {
+              return { label: item?.title || 'Box' }
+            }
+          },
+          fields: [
+            {
+              type: 'string',
+              label: 'Title',
+              name: 'title',
+              description: 'An optional title for this content-block to make it easier to edit.'
+            },
+            {
+              type: 'rich-text',
+              label: 'Block',
+              name: 'block',
+              templates: [
+                templateImage,
+                templateTweet
+              ]
+            }
           ]
         }
       ]
     }
   ]
 }
+
+/*
+
+row
+  block | block
+row
+  block | block | block
+
+*/

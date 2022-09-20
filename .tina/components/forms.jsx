@@ -50,3 +50,15 @@ export const templateImage = {
     }
   ]
 }
+
+export const templateTweet = {
+  name: 'TwitterTweetEmbed',
+  label: 'Tweet',
+  fields: [
+    {
+      name: 'tweetId',
+      label: 'Tweet ID',
+      type: 'string'
+    }
+  ]
+}

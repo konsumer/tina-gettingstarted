@@ -13,9 +13,9 @@ const schema = defineSchema({
       process.env.HEAD,
     token: process.env.TINA_TOKEN,
     media: {
-      tina: {
-        mediaRoot: 'uploads',
-        publicFolder: 'public'
+      loadCustomStore: async () => {
+        const pack = await import('next-tinacms-cloudinary')
+        return pack.TinaCloudCloudinaryMediaStore
       }
     }
   },
