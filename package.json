@@ -15,7 +15,7 @@
     "react-is": "^18.2.0",
     "react-twitter-embed": "^4.0.4",
     "styled-components": "^5.3.5",
-    "tinacms": "^0.69.3"
+    "tinacms": "^0.70.2"
   },
   "devDependencies": {
     "@tinacms/cli": "^0.61.8"
